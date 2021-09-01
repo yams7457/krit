@@ -50,7 +50,7 @@ end
 
 function g.key(x,y,z)
   if z == 1 then
-    counter[x][y] = clock.run(long_press,x,y)
+    counter[x][y] = clock.run
     range[y].held = range[y].held + 1
     local difference = range[y].x2 - range[y].x1
     local original = {x1 = range[y].x1, x2 = range[y].x2}
@@ -63,7 +63,7 @@ function g.key(x,y,z)
   elseif z == 0 then
         if range[y].held == 1 then
           if counter[x][y] then 
-           --clock.cancel(counter[x][y])
+           --clock.cancel[x][y]
            short_press(x,y,z)
            end
         end   
