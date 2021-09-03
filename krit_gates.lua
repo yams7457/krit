@@ -50,7 +50,7 @@ end
 
 function g.key(x,y,z)
   if z == 1 then
-    counter[x][y] = clock.run
+    counter[x][y] = clock.run(long_press,x,y)    
     range[y].held = range[y].held + 1
     local difference = range[y].x2 - range[y].x1
     local original = {x1 = range[y].x1, x2 = range[y].x2}
@@ -72,6 +72,10 @@ function g.key(x,y,z)
   grid_dirty = true
 end
 
+function rerun()
+  norns.script.load(norns.state.script)
+end
+
 function short_press(x,y,z)
       if not toggled[x][y] then
           toggled[x][y] = true
@@ -79,4 +83,8 @@ function short_press(x,y,z)
       elseif toggled [x][y] then
         toggled[x][y] = false
 end
+end
+
+function long_press()
+  print("PRESSED")
 end
