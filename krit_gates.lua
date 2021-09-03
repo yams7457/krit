@@ -63,7 +63,7 @@ function g.key(x,y,z)
   elseif z == 0 then
         if range[y].held == 1 then
           if counter[x][y] then 
-           --clock.cancel(counter[x][y])
+           clock.cancel(counter[x][y])
            short_press(x,y,z)
            end
         end   
