@@ -49,13 +49,13 @@ seq = nest_ {
             return (seqorlive.seq.tab.value == 1)
         end,
         
-        gate_page_1 = nest_ {
+        gate_page = nest_ {
             
             gatefield = _grid.toggle {
                 x = {1, 16},
                 y = {1, 4},
                 level = {0, 15},
-                fingers = 0,
+                fingers = { 0, 0},
                 
                 enabled = function(self)
                     return (seqorlive.seq.loop_mod.value == 0 and 
@@ -71,7 +71,7 @@ seq = nest_ {
                 y = i,
                 level = {0, 4},
                 z = -1,
-                fingers = 1,
+                fingers = { 1, 2 },
                 
                 enabled = function(self)
                     return (seqorlive.seq.loop_mod.value == 0 or 1 and 
@@ -95,7 +95,7 @@ seq = nest_ {
                 end}    
                 end)},
   
-  
+--interval stuff starts here  
     interval_tab_1 = nest_ {
         
         enabled = function(self)
@@ -104,11 +104,15 @@ seq = nest_ {
             end,
     
             interval_dots_1 = nest_(16):each(function(i,v)
+    
           
                 return _grid.number {
                     x = i,
                     y = {1, 5},
-                    level = {0, 4}
+                    level = {0, 4},
+                    enabled = function(self)
+                        return (seqorlive.seq.prob_mod.value == 0)
+                        end
                 }end),
           
             interval_clock_1 = _grid.number {
